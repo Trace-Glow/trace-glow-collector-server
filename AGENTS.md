@@ -3,16 +3,23 @@
 ## Shared Trace Glow context
 
 Before analyzing, planning, reviewing, or modifying this repository, load the
-following files from one pinned commit of the remote
-`Trace-Glow/trace-glow-contracts` repository:
+following files from one pinned commit of the `trace-glow-contracts` repository:
 
 - `context/shared.md`
 - `context/repositories.json`
 - `context/repositories/collector-server.md`
 
-Resolve the contracts repository's default branch to one commit SHA before
-reading these files and use that same SHA for the entire task. Prefer the
-configured GitHub MCP/connector. When it is unavailable, use authenticated
+Prefer the sibling repository at `../trace-glow-contracts`. Resolve and record
+one contracts commit SHA before reading these files, and use that same SHA for
+the entire task. To check whether the local checkout is current, run
+`git -C ../trace-glow-contracts fetch origin` and compare
+`git -C ../trace-glow-contracts rev-parse HEAD` with
+`git -C ../trace-glow-contracts rev-parse origin/main`; do not switch commits
+automatically during a task. Read the files locally at the pinned SHA.
+
+When the sibling repository is unavailable, resolve the default branch of the
+remote `Trace-Glow/trace-glow-contracts` repository to one commit SHA. Prefer
+the configured GitHub MCP/connector. When it is unavailable, use authenticated
 GitHub CLI reads:
 
 ```sh
@@ -48,4 +55,3 @@ duplicating event definitions by hand.
   through the pinned contract revision.
 - Run the repository's documented Go formatting, tests, and static checks before
   considering implementation complete.
-
